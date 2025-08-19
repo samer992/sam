@@ -1,0 +1,244 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} | Price{% endblock title %}
+{% block contant %}
+
+
+  <!--================ Hero sm Banner start =================-->
+    <section class="hero-wrap hero-wrap-2 d-flex" style="background-image: url({% static 'images/bg_2.jpg' %});">
+    	<div class="overlay"></div>
+    	<div class="container">
+    		<div class="row d-flex align-items-center">
+    			<div class="col-md-7 col-sm-12 ftco-animate text-bread d-flex align-items-center">
+    				<div class="text">
+	          	<h1 class="mb-3 mt-5 bread">Pricing</h1>
+	            <p class="breadcrumbs"><span class="mr-2"><a href="index.html">Home</a></span> <span>Pricing</span></p>
+            </div>
+          </div>
+    		</div>
+    	</div>
+    </section>
+
+
+  <!--================ Hero sm Banner end =================-->
+
+  <!--================ Pricing section start =================-->
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Pricing Plans For تجاره</span>
+            <h2 class="mb-3">Our Best Pricing</h2>
+          </div>
+        </div>
+    		<div class="row">
+              {% for event in events %}
+
+	        <div class="col-md-6 col-lg-3 ftco-animate ">
+              <form action="{% url 'events' event.id %}" method="POST">
+
+{% csrf_token %}
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading">{{event.title}}</h2>
+	            <span class="price"><sup>$</sup> <span class="number">{{event.price}}</span></span>
+	            <span class="excerpt d-block">{{event.dec}}</span>
+                  <button  name="btntgara" type="submit"  class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4 w-100">اشتراك</button>
+<!--	            <a href="#" class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4">Get Started</a>-->
+
+	            <h3 class="heading-2 mb-4">Enjoy All The Features</h3>
+
+	            <ul class="pricing-text">
+					<li>الأداره: <strong>1 مدير</strong></li>
+	                <li>الموظفين: <strong>1 موظف</strong></li>
+					<li>المنتجات: <strong>200 منتج</strong></li>
+<!--					<h5 >حدد نوع الأبلكيشن</h5>-->
+<!--	              <li><i class="ti-check"></i><input type="radio" name="app" id="android" value="android"> للأندرويد</li>-->
+<!--              <li><i class="ti-check"></i><input type="radio" name="app" id="desktop" value="desktop"> للكمبيوتر</li>-->
+<!--              <li class="unvalid"><i class="ti-close"></i><input type="radio" name="app" id="web" value="web"> للمتصفح</li>-->
+	              <li>All features</li>
+	            </ul>
+	            </div>
+	          </div>
+                 </form>
+	        </div>
+	       {%  empty %}
+                <h1>nooooooxxxxvvvvvvooooo</h1>
+            {% endfor %}
+	      </div>
+	      <div class="row  mt-5 justify-conten-center">
+        	<div class="col-md-8 ftco-animate">
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi vero accusantium sunt sit aliquam ipsum molestias autem perferendis, incidunt cumque necessitatibus cum amet cupiditate, ut accusamus. Animi, quo. Laboriosam, laborum.</p>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+
+  <!--================ Pricing section start =================-->
+<!--    <section class="ftco-section bg-light">-->
+<!--    	<div class="container">-->
+<!--    		<div class="row justify-content-center mb-5">-->
+<!--          <div class="col-md-7 text-center heading-section ftco-animate">-->
+<!--          	<span class="subheading">Pricing Plans For تصنيع</span>-->
+<!--            <h2 class="mb-3">Our Best Pricing</h2>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--    		<div class="row">-->
+<!--              {% for event in events %}-->
+
+<!--	        <div class="col-md-6 col-lg-3 ftco-animate">-->
+<!--              <form action="{% url 'events' event.id %}" method="POST">-->
+
+<!--{% csrf_token %}-->
+<!--	          <div class="block-7">-->
+<!--	            <div class="text-center">-->
+<!--	            <h2 class="heading">{{event.title}}</h2>-->
+<!--	            <span class="price"><sup>$</sup> <span class="number">{{event.price}}</span></span>-->
+<!--	            <span class="excerpt d-block">{{event.dec}}</span>-->
+<!--                  <button  name="btntsne3" type="submit"  class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4 w-100">اشتراك</button>-->
+<!--&lt;!&ndash;	            <a href="#" class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4">Get Started</a>&ndash;&gt;-->
+
+<!--	            <h3 class="heading-2 mb-4">Enjoy All The Features</h3>-->
+
+<!--	            <ul class="pricing-text">-->
+<!--					<li>الأداره: <strong>1 مدير</strong></li>-->
+<!--	                <li>الموظفين: <strong>1 موظف</strong></li>-->
+<!--					<li>المنتجات: <strong>100 منتج</strong></li>-->
+<!--					<h5 >حدد نوع الأبلكيشن</h5>-->
+<!--	              <li><i class="ti-check"></i><input type="radio" name="app" id="android1" value="android"> للأندرويد</li>-->
+<!--              <li><i class="ti-check"></i><input type="radio" name="app" id="desktop1" value="desktop"> للكمبيوتر</li>-->
+<!--              <li class="unvalid"><i class="ti-close"></i><input type="radio" name="app" id="web1" value="web"> للمتصفح</li>-->
+<!--	              <li>All features</li>-->
+<!--	            </ul>-->
+<!--	            </div>-->
+<!--	          </div>-->
+<!--                 </form>-->
+<!--	        </div>-->
+<!--	       {%  empty %}-->
+<!--                <h1>nooooooxxxxvvvvvvooooo</h1>-->
+<!--            {% endfor %}-->
+<!--	      </div>-->
+<!--	      <div class="row  mt-5 justify-conten-center">-->
+<!--        	<div class="col-md-8 ftco-animate">-->
+<!--        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi vero accusantium sunt sit aliquam ipsum molestias autem perferendis, incidunt cumque necessitatibus cum amet cupiditate, ut accusamus. Animi, quo. Laboriosam, laborum.</p>-->
+<!--        	</div>-->
+<!--        </div>-->
+<!--    	</div>-->
+<!--    </section>-->
+
+
+  <!--================ Pricing section start =================-->
+    <section class="ftco-section bg-light ">
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+          	<span class="subheading">Pricing Plans For للخدمات</span>
+            <h2 class="mb-3">Our Best Pricing</h2>
+          </div>
+        </div>
+    		<div class="row">
+              {% for event in events %}
+
+	        <div class="col-md-6 col-lg-3 ftco-animate">
+              <form action="{% url 'events' event.id %}" method="POST">
+
+{% csrf_token %}
+	          <div class="block-7">
+	            <div class="text-center">
+	            <h2 class="heading">{{event.title}}</h2>
+	            <span class="price"><sup>$</sup> <span class="number">{{event.price}}</span></span>
+	            <span class="excerpt d-block">{{event.dec}}</span>
+                  <button  name="btnkhdmat" type="submit"  class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4 w-100">اشتراك</button>
+<!--	            <a href="#" class="btn btn-primary btn-outline-primary d-block px-3 py-3 mb-4">Get Started</a>-->
+
+	            <h3 class="heading-2 mb-4">Enjoy All The Features</h3>
+
+	            <ul class="pricing-text">
+					<li>الأداره: <strong>1 مدير</strong></li>
+	                <li>الموظفين: <strong>1 موظف</strong></li>
+					<li>المنتجات: <strong>100 منتج</strong></li>
+					<h5 >حدد نوع الأبلكيشن</h5>
+	              <li><i class="ti-check"></i><input type="radio" name="app" id="android2" value="android"> للأندرويد</li>
+              <li><i class="ti-check"></i><input type="radio" name="app" id="desktop2" value="desktop"> للكمبيوتر</li>
+              <li class="unvalid"><i class="ti-close"></i><input type="radio" name="app" id="web2" value="web"> للمتصفح</li>
+	              <li>All features</li>
+	            </ul>
+	            </div>
+	          </div>
+                 </form>
+	        </div>
+	       {%  empty %}
+                <h1>nooooooxxxxvvvvvvooooo</h1>
+            {% endfor %}
+	      </div>
+	      <div class="row  mt-5 justify-conten-center">
+        	<div class="col-md-8 ftco-animate">
+        		<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi vero accusantium sunt sit aliquam ipsum molestias autem perferendis, incidunt cumque necessitatibus cum amet cupiditate, ut accusamus. Animi, quo. Laboriosam, laborum.</p>
+        	</div>
+        </div>
+    	</div>
+    </section>
+
+
+
+<!--  <section class="section-margin">-->
+<!--    <div class="container">-->
+<!--      <div class="section-intro pb-85px text-center">-->
+<!--        <h2 class="section-intro__title">اختار باقتك المفضله</h2>-->
+<!--        <p class="section-intro__subtitle">كل ما لدينا من باقات فهى مناسبه لكل الاحوال كما لدينا باقه التجربه فهى مناسبه لكسر الحاجز بينك وبين استخدامك للتكنولوجيا لتوفير وقتك وجهدك وتحقق لك اعلى درجات الامان</p>-->
+<!--      </div>-->
+
+<!--      <div class="row">-->
+
+<!--{% for event in events %}-->
+<!--        <div class="col-md-6 col-lg-4 mb-4 mb-lg-0">-->
+<!--<form action="{% url 'events' event.id %}" method="POST">-->
+
+<!--{% csrf_token %}-->
+<!--          <div class="card text-center card-pricing">-->
+
+
+<!--            <div class="card-pricing__header">-->
+<!--              <h4>{{event.title}}</h4>-->
+<!--              <p>{{event.dec}}</p>-->
+<!--              <h1 class="card-pricing__price"><span>$</span>{{event.price}}</h1>-->
+
+<!--            </div>-->
+
+<!--            <ul class="card-pricing__list">-->
+<!--              <li><i class="ti-check"></i>1 موظف</li>-->
+<!--&lt;!&ndash;              <li><i class="ti-check"></i><input type="radio" name="app" id="android" value="android"> Android</li>&ndash;&gt;-->
+<!--&lt;!&ndash;              <li><i class="ti-check"></i><input type="radio" name="app" id="desktop" value="desktop"> DeskTop</li>&ndash;&gt;-->
+<!--&lt;!&ndash;              <li class="unvalid"><i class="ti-close"></i><input type="radio" name="app" id="web" value="web"> Web</li>&ndash;&gt;-->
+<!--              <li class="unvalid"><i class="ti-close"></i>manager</li>-->
+<!--            </ul>-->
+<!--            <div class="card-pricing__footer">-->
+<!--&lt;!&ndash;              <a class="nav-link" href="{% url 'events' event.id %}" type="submit">Price</a>&ndash;&gt;-->
+
+<!--              <button  name="btn3month" type="submit"  class="btn btn-info m-3">اشتراك</button>-->
+<!--            </div>-->
+
+<!--          </div>-->
+<!--  </form>-->
+<!--        </div>-->
+
+
+<!--        {%  empty %}-->
+<!--                <h1>nooooooxxxxvvvvvvooooo</h1>-->
+<!--            {% endfor %}-->
+
+<!--      </div>-->
+
+
+<!--    </div>-->
+<!--  </section>-->
+<!--  -->
+<!--================ Pricing section end =================-->
+
+
+
+
+
+
+{% endblock %}

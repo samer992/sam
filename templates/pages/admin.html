@@ -1,0 +1,224 @@
+{% extends "base-admin.html" %}
+
+{% load static %}
+{% block title %} | Admin-Profile{% endblock title %}
+
+{% block xxx %}
+
+<!--<h1>معلومات عن ==> الاشتراك</h1>-->
+<!--<h1>معلومات عن ==> الموظفين</h1>-->
+<!--<h1>معلومات عن ==> المنتجات</h1>-->
+
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">Profile</h4>
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Profile</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <!-- ============================================================== -->
+                <!-- Start Page Content -->
+                <!-- ============================================================== -->
+                <!-- Row -->
+                <div class="row">
+                    <!-- Column -->
+                    <div class="col-lg-4 col-xlg-3 col-md-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <center class="m-t-30"> <img src="{{profile_picture.url}}" class="rounded-circle" width="200" />
+
+                                    <h4 class="card-title m-t-10">{{username}}</h4>
+                                    <h6 class="card-subtitle">{{shopedec}}</h6>
+                                    <div class="row text-center justify-content-md-center">
+                                        <div class="col-5 "><a href="javascript:void(0)" class="link"><i class="mdi mdi-plus"></i> <font class="font-medium">{{num_product}}</font></a> : عدد منتجاتك</div>
+                                        <div class="col-5"><a href="javascript:void(0)" class="link"><i class="mdi mdi-plus"></i> <font class="font-medium">{{num_emp}}</font></a> : عدد الموظفين لديك</div>
+                                    </div>
+                                </center>
+                            </div>
+                            <div>
+                                <hr>
+
+                            </div>
+                            <div class="card-body"><i class="mdi mdi-email"></i> <small class="text-muted">Email address </small>
+                                <h6>{{email}}</h6><i class="mdi mdi-cellphone-iphone"></i> <small class="text-muted p-t-30 db "> Phone</small>
+                                <h6>{{phone}}</h6><i class="mdi mdi-map-marker-radius"></i> <small class="text-muted p-t-30 db">Address</small>
+                                <h6>{{address2}}</h6>
+                                <div class="map-box">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d470029.1604841957!2d72.29955005258641!3d23.019996818380896!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e848aba5bd449%3A0x4fcedd11614f6516!2sAhmedabad%2C+Gujarat!5e0!3m2!1sen!2sin!4v1493204785508" width="100%" height="150" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div> <small class="text-muted p-t-30 db">Social Profile</small>
+                                <br/>
+                                <button class="btn btn-circle btn-secondary"><i class="mdi mdi-facebook"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="mdi mdi-twitter"></i></button>
+                                <button class="btn btn-circle btn-secondary"><i class="mdi mdi-youtube-play"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Column -->
+                    <!-- Column -->
+                    <div class="col-lg-8 col-xlg-9 col-md-7 ">
+                        <div class="card">
+                            <div class="card-body text-center">
+
+                                <h1>بياناتك الشخصيه</h1>
+                            </div>
+                            <div class="card-body">
+                                 <div class="col-md py-4">
+                                 <form action="{% url 'ragstar' %}" method="POST" class="row g-3 text-right">
+
+                {% csrf_token %}
+
+
+                    <div class="col-md-6">
+                        <label for="inputLastName" class="form-label">الاسم الاخير</label>
+                        <input name="lastname" type="text" class="form-control" id="inputLastName" placeholder="ادخل اسمك الاخير" required value="{{lastname}}">
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label for="inputFirstName" class="form-label">الاسم الاول</label>
+                        <input name="firstname" type="text" class="form-control" id="inputFirstName" placeholder="ادخل اسمك الاول" required value="{{firstname}}">
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">الايميل</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="ادخل ايميلك" required value="{{email}}">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="inputPassword4" class="form-label">كلمه السر</label>
+                        <input name="password" type="password" class="form-control" id="inputPassword4" placeholder="ادخل كلمه سر قويه" required  value="{{password}}">
+                    </div>
+
+                    <div class="col-12 m-3 text-left">
+                        <button name="btnsignup" type="submit" class="btn btn-primary">حفظ بياناتك</button>
+                    </div>
+                </form>
+                                     </div>
+
+
+                            </div>
+
+                        </div>
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <h1>بيانات متجرك</h1>
+                            </div>
+                            <div class="card-body">
+
+                                <div class="col-md py-4">
+
+                <form method="POST" enctype="multipart/form-data" class="row g-3">
+                {% csrf_token %}
+
+                    <div class="col-md-8">
+                        <label for="inputLastNam" class="form-label ">وصف المتجر</label>
+                        <input name="shopedec" type="text" class="form-control" id="inputLastNam" placeholder="وصف المتجر" required value="{{shopedec}}">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputFirstNam" class="form-label">اسم المتجر</label>
+                        <input name="shopename" type="text" class="form-control" id="inputFirstNam" placeholder="اسم المتجر" required value="{{shopename}}">
+                    </div>
+
+
+
+                    <div class="col-8">
+                        <label for="inputAddress2" class="form-label">العنوان</label>
+                        <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="المدينه , القسم , الشارع" required value="{{address}}">
+                    </div>
+
+                     <div class="col-4">
+                        <label for="inputAddress" class="form-label">المحافظه</label>
+                        <input name="city" type="text" class="form-control" id="inputAddress" placeholder="المحافظه" required value="{{city}}">
+                    </div>
+
+
+
+
+
+
+                    <div class="col-md-8">
+                        <label for="inputZip" class="form-label">رقم التليفون</label>
+                        <input name="phone" type="tel" class="form-control" id="inputZip" required value="{{phone}}" placeholder="رقم التليفون">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label for="inputCity" class="form-label">رقم السجل التجارى</label>
+                        <input  name="postcode" type="text" class="form-control" id="inputCity" required value="{{postcode}}" placeholder=" ارقام 6">
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <label for="inputfile" class="form-label">ادخل صوره المتجر</label>
+                        <input name="imgprofile" type="file" class="form-control" id="inputfile" required value="{{file}}">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="inputfile2" class="form-label">ادخل شعار المتجر</label>
+                        <input name="logo" type="file" class="form-control" id="inputfile2" required value="{{file}}">
+                    </div>
+
+                    <div class="col-12 m-3">
+                        <button name="btnsave" type="submit" class="btn btn-primary">حفظ بياناتك</button>
+                    </div>
+                </form>
+
+
+
+
+
+            </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                    <!-- Column -->
+                </div>
+                <!-- Row -->
+                <!-- ============================================================== -->
+                <!-- End PAge Content -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- Right sidebar -->
+                <!-- ============================================================== -->
+                <!-- .right-sidebar -->
+                <!-- ============================================================== -->
+                <!-- End Right sidebar -->
+                <!-- ============================================================== -->
+            </div>
+</div>
+
+
+
+{% endblock %}
+

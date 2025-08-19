@@ -1,0 +1,378 @@
+{% extends "base-admin.html" %}
+
+{% load static %}
+{% block title %} | Admin-Event{% endblock title %}
+
+{% block xxx %}
+       <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-5 align-self-center">
+                        <h4 class="page-title">Starter Page</h4>
+                    </div>
+                    <div class="col-7 align-self-center">
+                        <div class="d-flex align-items-center justify-content-end">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb">
+                                    <li class="breadcrumb-item">
+                                        <a href="#">Home</a>
+                                    </li>
+                                    <li class="breadcrumb-item active" aria-current="page">Starter Page</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-8 text-center border">
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">باقتك</h4>
+                                <progress min="0" max={{num_days}} value={{stay_days}} style="width:500px;" ></progress>
+                                <h2 class="card-title ">({{num_days}}/<strong>{{stay_days}}</strong>)</h2>
+                            </div>
+
+
+
+                            <div class="card-body">
+                                <h5 class="card-title m-b-5">Referral Earnings</h5>
+                                <h3 class="font-light">{{start_time}}<strong> : تاريخ البدايه</strong></h3>
+                                <h3 class="font-light">{{last_time}}<strong> : تاريخ انتهاء</strong></h3>
+                                <div class="m-t-20 text-center">
+                                    <div id="earnings"></div>
+<!--                                    <h4>{{app}}</h4>-->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row border">
+
+                            {% for moduler in usermoduler %}
+
+                        <div class="card col-xl-12 ">
+                            <div class="card-body">
+                                {% if moduler.moduler_profile %}
+                                {% for pro in moduler.moduler_profile %}
+                                <h3 class="card-title m-b-5">{{moduler.name}} {{pro.shop_name}}</h3>
+                                <h5>{{pro.dec_name}}</h5>
+                                <center class="m-t-30"> <img src="{{pro.logo_picture}}" class="rounded-circle" width="100" ></center>
+                                <h3 class="card-title m-b-5">عدد منتجاتك</h3>
+                                <progress min="0" max="{{num_products}}" value="{{num_products_now}}" class="col-12" ></progress>
+                                <h2 class=" ">({{moduler.num_products}}/<strong>{{num_products_now}}</strong>)</h2>
+                                {% endfor %}
+                                {% else %}
+
+                                <h3 class="card-title m-b-5">{{moduler.name}}</h3>
+                                <center class="m-t-30"> <img src="{{moduler.imgmoduler}}" class="rounded-circle" width="100" ></center>
+                                <div class="card-body">
+                                <h3 class="card-title m-b-5">عدد موظفينك</h3>
+                                <progress min="0" max={{num_employee}} value="{{num_employee_now}}" style="width:500px;" ></progress>
+                                <h2 class="card-title ">({{num_employee}}/<strong>{{num_employee_now}}</strong>)</h2>
+
+                            </div>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                            {% endfor %}
+</div>
+
+<!--                         <div class="card">-->
+
+<!--                            <div class="card-body">-->
+<!--                                <h3 class="card-title m-b-5">عدد منتجاتك</h3>-->
+<!--                                <progress min="0" max="{{num_products}}" value="{{num_products_now}}" style="width:500px;" ></progress>-->
+<!--                                <h2 class=" ">({{num_products}}/<strong>{{num_products_now}}</strong>)</h2>-->
+
+
+<!--                            </div>-->
+<!--                            <div>-->
+<!--                                <hr>-->
+<!--                            </div>-->
+
+<!--                        </div>-->
+
+                    </div>
+
+
+<!--                    <div class="col-md-4 text-center">-->
+<!--                        <div class="card">-->
+<!--                            <form action="{% url 'addCartEvent' %}" method="POST" >-->
+<!--                            <div class="card-body">-->
+<!--                                <h2 class="card-title m-b-5">Cart</h2>-->
+<!--                                <hr class="mb-5">-->
+
+
+<!--                {% csrf_token %}-->
+<!--                                <div class="row">-->
+<!--                                    <div class="col-5 text-right justify-content-md-center">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-8"><a href="{% url 'handelCartEvent' add=1 %}" class="link"><i class="mdi mdi-minus"></i> </a></div>-->
+<!--                                            <div class=""><h4>{{handelCartEvent.num_pro_cart}}</h4></div>-->
+<!--                                            <div class="col-2"><a href="{% url 'handelCartEvent' add=0 %}" class="link"><i class="mdi mdi-plus"></i> </a></div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                <div class="col-6 text-right justify-content-md-center">-->
+<!--                                    <h3  class="font-light"><strong> : أضافه منتجات</strong></h3>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+
+<!--                                <div class="row">-->
+<!--                                    <div class="col-2 text-center justify-content-md-center">-->
+<!--                                        <div class="row">-->
+<!--                                            <div class="col-2 "><a href="{% url 'handelCartEventEmp' add=1 %}" class="link"><i class="mdi mdi-minus"></i> </a></div>-->
+<!--                                        <div class="col-2 "><a href="{% url 'handelCartEventEmp' add=0 %}" class="link"><i class="mdi mdi-plus"></i> </a></div>-->
+<!--                                        </div>-->
+
+<!--                                    </div>-->
+<!--                                <div class="col-10 text-right justify-content-md-center">-->
+<!--                                    <h3 class="font-light">{{handelCartEvent.num_emp_cart}}<strong> : أضافه موظفين</strong></h3>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+<!--                                 <div class="row">-->
+<!--                                    <div class="col-2 text-center justify-content-md-center">-->
+
+<!--                                        <a class=" mdi mdi-menu text-muted " href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></a>-->
+<!--                                        <div class="dropdown-menu dropdown-menu-right user-dd animated">-->
+<!--                                            {% for event in events %}-->
+<!--                                            <div>-->
+<!--                                            <a class="dropdown-item" href="{% url 'handelCartEventEvents' add=event.id %}"><i class="mdi mdi-calendar m-r-5 m-l-5"></i>-->
+<!--                                                {{event.title}}</a></div>-->
+<!--                                            {% endfor %}-->
+
+<!--                                        </div>-->
+<!--                                    </div>-->
+<!--                                <div class="col-10 text-right justify-content-md-center">-->
+<!--                                    <h3 class="font-light">{{handelCartEvent.event_id}}<strong> : الأشتراك</strong></h3>-->
+<!--                                    </div>-->
+
+<!--                                </div>-->
+<!--                                <hr class="m-5">-->
+<!--                                <div class="row">-->
+
+<!--                                <div class="col-10 text-right justify-content-md-center">-->
+<!--                                     {% for moduler in modulers_type %}-->
+
+
+
+
+<!--                                    <h3 class="card-title m-b-5">{{moduler.name}}</h3>-->
+<!--                                    <center class="m-t-30"> <img src="{{moduler.imgmoduler.url}}" class="rounded-circle" width="100" ></center>-->
+<!--                                    <a href="{% url 'addmoduler' modu=moduler.id %}" class="link"><i class="mdi mdi-plus"></i> </a>-->
+
+
+
+
+
+<!--                            {% endfor %}-->
+
+<!--                                    </div>-->
+
+<!--                                </div>-->
+
+
+<!--&lt;!&ndash;                              <div class="checkbox text-right row" >&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-2 text-center justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% if android == True %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% if android_back == True %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            <div class="col-2 "><i class="mdi mdi-check"></i></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <div class="col-2 "><a href="{% url 'handelCartEventApp' app='wep' %}" class="link"><i class="mdi mdi-check"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% endif %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                      {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="col-2 "><a href="{% url 'handelCartEventApp' app='android' %}" class="link"><i class="mdi mdi-checkbox-blank-outline"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;&lt;!&ndash;                                        <div class="col-2 "><input name="app" type="checkbox" value="option2"></div>&ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-10 text-right justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h3 class="font-light"><strong>للأندرويد</strong></h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                <div class="checkbox text-right row" >&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-2 text-center justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% if wep == True %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% if wep_back == True %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            <div class="col-2 "><i class="mdi mdi-check"></i></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <div class="col-2 "><a href="{% url 'handelCartEventApp' app='wep' %}" class="link"><i class="mdi mdi-check"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="col-2 "><a href="{% url 'handelCartEventApp' app='wep' %}" class="link"><i class="mdi mdi-checkbox-blank-outline"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-10 text-right justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h3 class="font-light"><strong>للويب</strong></h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                <div class="checkbox text-right row" >&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-2 text-center justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% if desktop == True %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% if desktop_back == True %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                            <div class="col-2 "><i class="mdi mdi-check"></i></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                            <div class="col-2 "><a href="{% url 'handelCartEventApp' app='desktop' %}" class="link"><i class="mdi mdi-check"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                        {% endif %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                      {% else %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                        <div class="col-2 "><a href="{% url 'handelCartEventApp' app='desktop' %}" class="link"><i class="mdi mdi-checkbox-blank-outline"></i></a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                      {% endif %}&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                                  <div class="col-10 text-right justify-content-md-center">&ndash;&gt;-->
+<!--&lt;!&ndash;                                    <h3 class="font-light"><strong>للكمبيوتر</strong></h3>&ndash;&gt;-->
+<!--&lt;!&ndash;                                    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                              </div>&ndash;&gt;-->
+
+
+<!--                                <hr class="">-->
+<!--                                <div class="text-right m-5">-->
+<!--                                    <h3 class="font-light">$ {{total}}<strong> : الأجمالى</strong></h3>-->
+<!--                                    <h3 class="font-light">0<strong> : الخصم</strong></h3>-->
+<!--                                    <h3 class="font-light">0<strong> : الأجمالى</strong></h3>-->
+<!--                                </div>-->
+<!--                                <div class="m-t-20 text-center">-->
+<!--                                    <button name="btnsignup" type="submit" class="btn btn-primary">حفظ بياناتك</button>-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                                 </form>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+                </div>
+<!--<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">-->
+<!--  Launch demo modal-->
+<!--</button>-->
+
+<!--&lt;!&ndash; Modal &ndash;&gt;-->
+<!--<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>-->
+<!--        <button type="button" class=" fa fa-add" data-dismiss="modal" aria-label="Close"></button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+
+
+<!--    <div class="container">-->
+<!--        <div class="col-md text-center">-->
+<!--            <h2>profile</h2>-->
+<!--            <hr>-->
+<!--            {% include "parts/_alerts.html" %}-->
+<!--        </div>-->
+
+<!--                {% if request.user.is_authenticated %}-->
+<!--                <div class=" align-items-center justify-content-center flex-row-reverse text-right">-->
+<!--                <div class="col-md ">-->
+<!--                    <img src="{% static 'images/bg_2.jpg' %}" alt="" class="img-fluid">-->
+<!--                </div>-->
+<!--                <div class="col-md py-4">-->
+
+<!--                <form action="{% url 'modal' %}" method="POST" enctype="multipart/form-data" class="row g-3">-->
+<!--                {% csrf_token %}-->
+
+<!--                    <div class="col-md-8">-->
+<!--                        <label for="inputLastName" class="form-label ">وصف المتجر</label>-->
+<!--                        <input name="shopedec" type="text" class="form-control" id="inputLastName" placeholder="وصف المتجر" required value="{{shopedec}}">-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-4">-->
+<!--                        <label for="inputFirstName" class="form-label">اسم المتجر</label>-->
+<!--                        <input name="shopename" type="text" class="form-control" id="inputFirstName" placeholder="اسم المتجر" required value="{{shopename}}">-->
+<!--                    </div>-->
+
+
+
+<!--                    <div class="col-8">-->
+<!--                        <label for="inputAddress2" class="form-label">العنوان</label>-->
+<!--                        <input name="address" type="text" class="form-control" id="inputAddress2" placeholder="المدينه , القسم , الشارع" required value="{{address}}">-->
+<!--                    </div>-->
+
+<!--                     <div class="col-4">-->
+<!--                        <label for="inputAddress" class="form-label">المحافظه</label>-->
+<!--                        <input name="city" type="text" class="form-control" id="inputAddress" placeholder="المحافظه" required value="{{city}}">-->
+<!--                    </div>-->
+
+
+
+
+
+
+<!--                    <div class="col-md-8">-->
+<!--                        <label for="inputZip" class="form-label">رقم التليفون</label>-->
+<!--                        <input name="phone" type="tel" class="form-control" id="inputZip" required value="{{phone}}" placeholder="رقم التليفون">-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-4">-->
+<!--                        <label for="inputCity" class="form-label">رقم السجل التجارى</label>-->
+<!--                        <input  name="postcode" type="text" class="form-control" id="inputCity" required value="{{postcode}}" placeholder=" ارقام 6">-->
+<!--                    </div>-->
+
+
+<!--                    <div class="col-md-6">-->
+<!--                        <label for="inputfile" class="form-label">ادخل صوره المتجر</label>-->
+<!--                        <input name="imgprofile" type="file" class="form-control" id="inputfile" required value="{{file}}">-->
+<!--                    </div>-->
+
+<!--                    <div class="col-md-6">-->
+<!--                        <label for="inputfile2" class="form-label">ادخل شعار المتجر</label>-->
+<!--                        <input name="logo" type="file" class="form-control" id="inputfile2" required value="{{file}}">-->
+<!--                    </div>-->
+
+<!--                    <div class="col-12 mt-5">-->
+<!--                        <button name="btnsave" type="submit" class="btn btn-primary">حفظ بياناتك</button>-->
+<!--                    </div>-->
+<!--                </form>-->
+
+<!--                {% else %}-->
+<!--                    <h4 class="alert alert-warning">-->
+<!--                        you must be-->
+<!--                        <a href="{% url 'signin' %}" class= "link-fancy link-fancy-info">logged in</a>-->
+<!--                    </h4>-->
+<!--                    <div class="col-md m-5 text-center">-->
+<!--                        <img src="{% static 'images/bg_2.jpg' %}" alt="bg" class="img-fluid">-->
+<!--                    </div>-->
+<!--                {% endif %}-->
+
+
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--      </div>-->
+<!--&lt;!&ndash;      <div class="modal-footer">&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>&ndash;&gt;-->
+<!--&lt;!&ndash;        <button type="button" class="btn btn-primary">Save changes</button>&ndash;&gt;-->
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+            </div>
+        </div>
+
+{% endblock %}

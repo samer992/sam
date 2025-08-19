@@ -1,0 +1,79 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}SignUp{% endblock title %}
+{% block contant %}
+
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>Contact Us</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+<section id="learn1" class="py-5  mt-5">
+    <div class="container pt-5">
+        <div class="col-md text-center">
+            <h2>انشاء حساب جديد</h2>
+            <hr>
+            {% include "parts/_alerts.html" %}
+
+        </div>
+        <div class="row align-items-center justify-content-center flex-row-reverse">
+            <div class="col-md m-5">
+                <img src="{% static 'img/undraw_join.svg' %}" alt="" class="img-fluid">
+            </div>
+            <div class="col-md py-4">
+                {% if is_added == True %}
+                    <form method="POST" class="d-none">
+                        </form>
+                {% else %}
+                <form action="#" method="POST" class="row g-3 text-right">
+
+                {% csrf_token %}
+
+
+                    <div class="col-md-6">
+                        <label for="inputLastName" class="form-label">الاسم الاخير</label>
+                        <input name="lastname" type="text" class="form-control" id="inputLastName" placeholder="ادخل اسمك الاخير" required value="{{lastname}}">
+                    </div>
+
+
+
+                    <div class="col-md-6">
+                        <label for="inputFirstName" class="form-label">الاسم الاول</label>
+                        <input name="firstname" type="text" class="form-control" id="inputFirstName" placeholder="ادخل اسمك الاول" required value="{{firstname}}">
+                    </div>
+
+
+                    <div class="col-md-12">
+                        <label for="inputEmail4" class="form-label">الايميل</label>
+                        <input name="email" type="email" class="form-control" id="inputEmail4" placeholder="ادخل ايميلك" required value="{{email}}">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="inputPassword4" class="form-label">كلمه السر</label>
+                        <input name="password" type="password" class="form-control" id="inputPassword4" placeholder="ادخل كلمه سر قويه" required  value="{{password}}">
+                    </div>
+
+                    <div class="col-12 m-3 text-center">
+                        <button name="btnsignup" type="submit" class="btn btn-primary"><h3>انشاء حساب </h3></button>
+                    </div>
+                </form>
+
+{% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

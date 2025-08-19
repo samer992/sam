@@ -1,0 +1,73 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block title %}SignIn{% endblock title %}
+{% block contant %}
+  <!--================ Hero sm Banner start =================-->
+  <section class="hero-banner hero-banner--sm mb-30px">
+    <div class="container">
+      <div class="hero-banner--sm__content">
+        <h1>Contact Us</h1>
+        <nav aria-label="breadcrumb" class="banner-breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Sign Up</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </section>
+  <!--================ Hero sm Banner end =================-->
+
+<section id="learn1" class="py-5 mt-5">
+    <div class="container pt-5">
+
+
+
+    {% if request.user.is_authenticated %}
+    <div class="col-md m-5 text-center">
+      <img src="{% static 'images/undraw_join.svg' %}" alt="" class="img-fluid ">
+    </div>
+
+    <h4 class="alert alert-warning">
+      wellcome, {{request.user.first_name}}, you are now logged in,
+      <a href="{% url 'logoutp' %}">LogOut</a>
+    </h4>
+
+    {% else %}
+    <div class="col-md text-center">
+          <h2>wellcome(singin)</h2>
+          <hr>
+          {% include "parts/_alerts.html" %}
+        </div>
+    <div class="row align-items-center justify-content-center flex-row-reverse">
+        <div class="col-md m-5 center">
+          <img src="{% static 'images/bg_3.jpg' %}" alt="" class="img-fluid">
+            <a href="{% url 'ragstar' %}" class="link-fancy link-fancy-light">انشاء حساب جديد</a>
+        </div>
+    <div class="col-md py-4 text-center">
+          <form action="#" method="POST">
+              {% csrf_token %}
+            <div class="input-group mb-3">
+                <input name="email" type="email" class="form-control" placeholder="ادخل ايميلك" aria-label="Username" aria-describedby="basic-addon" required>
+                <span class="input-group-text" id="basic-addon">الايميل</span>
+            </div>
+            <div class="input-group mb-3">
+
+              <input name="password" type="password" class="form-control" placeholder="ادخل كلمه السر" aria-label="Username" aria-describedby="basic-addon1" required>
+                <span class="input-group-text" id="basic-addon1">كلمه السر</span>
+            </div>
+            <button name="btnlogin" type="submit" class="btn btn-info m-3">تسجيل الدخول</button>
+
+
+
+          </form>
+    {% endif %}
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
