@@ -67,6 +67,7 @@ class productsView(GenericAPIView):
                         print(product_data["name"])
 
                     if product_data["description"] != "undefined" and product_data["description"] != old_product.description and product_data["description"] != "":
+                        old_product.description = product_data["description"]
                         print(product_data["description"])
 
                     if product_data["price_sale"] != "undefined" and float(product_data["price_sale"]) != old_product.price_sale and product_data["price_sale"] != "":
